@@ -1,0 +1,12 @@
+<svg width="160" height="80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="r t icon">
+  <!-- Background -->
+  <rect width="160" height="80" fill="#2e006b"></rect>
+  
+  <!-- Black square with red 'r' -->
+  <rect x="0" y="0" width="80" height="80" fill="black"></rect>
+  <text x="40" y="54" font-family="Georgia, serif" font-size="56" font-weight="bold" fill="#d32f2f" text-anchor="middle" dominant-baseline="middle" style="user-select:none;">r</text>
+  
+  <!-- White square with black 't' -->
+  <rect x="80" y="0" width="80" height="80" fill="white"></rect>
+  <text x="120" y="54" font-family="Georgia, serif" font-size="56" font-weight="bold" fill="black" text-anchor="middle" dominant-baseline="middle" style="user-select:none;">t</text>
+</svg>

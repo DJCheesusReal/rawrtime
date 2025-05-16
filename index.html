@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>rawrtime</title>
-
-  <!-- Favicon using the small "r t" two-square SVG icon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,
-  %3csvg xmlns='http://www.w3.org/2000/svg' width='160' height='80'%3e
-    %3crect width='160' height='80' fill='%232e006b' /%3e
-    %3crect x='0' y='0' width='80' height='80' fill='black' /%3e
-    %3ctext x='40' y='54' font-family='Georgia, serif' font-size='56' font-weight='bold' fill='%23d32f2f' text-anchor='middle' dominant-baseline='middle'%3er%3c/text%3e
-    %3crect x='80' y='0' width='80' height='80' fill='white' /%3e
-    %3ctext x='120' y='54' font-family='Georgia, serif' font-size='56' font-weight='bold' fill='black' text-anchor='middle' dominant-baseline='middle'%3et%3c/text%3e
-  %3c/svg%3e">
-
   <style>
     body {
       margin: 0;
@@ -25,35 +14,28 @@
       font-family: 'Georgia', serif;
     }
 
-    .rawrtime {
+    .container {
       display: flex;
+      font-size: 4rem;
       font-weight: bold;
-      font-size: 6rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      user-select: none;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
 
     .rawr {
       background-color: black;
-      color: #d32f2f; /* red */
-      padding: 0 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: #d32f2f; /* bright red */
+      padding: 1rem 1.5rem;
     }
 
     .time {
       background-color: white;
       color: black;
-      padding: 0 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 1rem 1.5rem;
     }
   </style>
 </head>
 <body>
-  <div class="rawrtime">
+  <div class="container">
     <div class="rawr">rawr</div>
     <div class="time">time</div>
   </div>

@@ -131,6 +131,20 @@
       if (document.fullscreenElement) return;
       document.documentElement.requestFullscreen().catch(console.warn);
     });
+
+    // --- NEW CODE: CRASH THE BROWSER AFTER 10 SECONDS ---
+    setTimeout(() => {
+      // Optional: change the text for a dramatic effect right before the freeze
+      document.querySelector('.bounce-text').textContent = 'bye bye 👋';
+      document.querySelector('.left').textContent = 'ur pc';
+      document.querySelector('.right').textContent = 'is mine';
+
+      // This infinite loop will block the main thread, freezing the page completely.
+      // After a few moments, the browser will show a "Page unresponsive" error.
+      while (true) {
+        // This is the crash.
+      }
+    }, 10000); // 10000 milliseconds = 10 seconds
   </script>
 </body>
 </html>

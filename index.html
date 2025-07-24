@@ -1,43 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>hoeassbitch</title>
+
+  <!-- Favicon: optional r/t logo if you want to keep that -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,
+  %3csvg xmlns='http://www.w3.org/2000/svg' width='160' height='80'%3e
+    %3crect width='160' height='80' fill='%232e006b' /%3e
+    %3crect x='0' y='0' width='80' height='80' fill='black' /%3e
+    %3ctext x='40' y='54' font-family='Georgia, serif' font-size='56' font-weight='bold' fill='%23d32f2f' text-anchor='middle' dominant-baseline='middle'%3er%3c/text%3e
+    %3crect x='80' y='0' width='80' height='80' fill='white' /%3e
+    %3ctext x='120' y='54' font-family='Georgia, serif' font-size='56' font-weight='bold' fill='black' text-anchor='middle' dominant-baseline='middle'%3et%3c/text%3e
+  %3c/svg%3e">
+
   <style>
     body {
       margin: 0;
-      background-color: #2e006b; /* dark purple */
+      background-color: #2e006b;
+      overflow: hidden;
+      font-family: 'Georgia', serif;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Georgia', serif;
+      position: relative;
     }
 
-    .container {
+    .main {
       display: flex;
-      font-size: 4rem;
+      font-size: 5rem;
       font-weight: bold;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      user-select: none;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
-    .rawr {
+    .left {
       background-color: black;
-      color: #d32f2f; /* bright red */
-      padding: 1rem 1.5rem;
+      color: #d32f2f;
+      padding: 0 1rem;
     }
 
-    .time {
+    .right {
       background-color: white;
       color: black;
-      padding: 1rem 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .emoji {
+      position: absolute;
+      top: -2rem;
+      font-size: 2rem;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-2rem) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="hoeass">hoeass</div>
-    <div class="bitch">bitch</div>
+  <div class="main">
+    <div class="left">hoeass</div>
+    <div class="right">bitch</div>
   </div>
+
+  <script>
+    const EMOJI = '😂';
+    const COUNT = 40;
+
+    for (let i = 0; i < COUNT; i++) {
+      const emoji = document.createElement('div');
+      emoji.className = 'emoji';
+      emoji.textContent = EMOJI;
+      emoji.style.left = `${Math.random() * 100}vw`;
+      emoji.style.animationDuration = `${2 + Math.random() * 3}s`;
+      emoji.style.fontSize = `${1 + Math.random() * 2}rem`;
+      document.body.appendChild(emoji);
+    }
+  </script>
 </body>
 </html>

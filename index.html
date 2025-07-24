@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>hoeassbitch</title>
 
-  <!-- Favicon: optional r/t logo if you want to keep that -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,
   %3csvg xmlns='http://www.w3.org/2000/svg' width='160' height='80'%3e
     %3crect width='160' height='80' fill='%232e006b' /%3e
@@ -25,6 +24,8 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      cursor: none; /* hide cursor */
+      animation: shake 0.2s infinite;
     }
 
     .main {
@@ -33,6 +34,7 @@
       font-weight: bold;
       user-select: none;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      z-index: 1;
     }
 
     .left {
@@ -52,6 +54,7 @@
       top: -2rem;
       font-size: 2rem;
       animation: fall linear infinite;
+      z-index: 0;
     }
 
     @keyframes fall {
@@ -64,17 +67,45 @@
         opacity: 0;
       }
     }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-0.5rem); }
+    }
+
+    .bounce-text {
+      position: absolute;
+      top: 1rem;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 2rem;
+      animation: bounce 1s infinite;
+      user-select: none;
+      z-index: 2;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0px, 0px); }
+      25% { transform: translate(1px, -1px); }
+      50% { transform: translate(-1px, 1px); }
+      75% { transform: translate(1px, 1px); }
+      100% { transform: translate(-1px, -1px); }
+    }
   </style>
 </head>
 <body>
+  <div class="bounce-text">damn bro fr 💔</div>
+
   <div class="main">
     <div class="left">hoeass</div>
     <div class="right">bitch</div>
   </div>
 
   <script>
+    // emoji rain
     const EMOJI = '😂';
-    const COUNT = 40;
+    const COUNT = 50;
 
     for (let i = 0; i < COUNT; i++) {
       const emoji = document.createElement('div');
@@ -85,6 +116,21 @@
       emoji.style.fontSize = `${1 + Math.random() * 2}rem`;
       document.body.appendChild(emoji);
     }
+
+    // try to auto fullscreen (only works if user interacts)
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(console.warn);
+        }
+      }, 500);
+    });
+
+    // fallback: fullscreen on click
+    document.body.addEventListener("click", () => {
+      if (document.fullscreenElement) return;
+      document.documentElement.requestFullscreen().catch(console.warn);
+    });
   </script>
 </body>
 </html>
